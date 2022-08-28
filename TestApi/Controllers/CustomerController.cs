@@ -19,7 +19,7 @@ namespace TestApi.Controllers
             return Ok("Jenkins Executed"); 
         }
         [HttpGet]
-        [Route("second-test")]
+        [Route("third-test")]
         public IActionResult Test3()
         {
             return Ok("Jenkins still executing");
