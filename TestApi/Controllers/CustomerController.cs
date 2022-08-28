@@ -7,9 +7,13 @@ namespace TestApi.Controllers
     public class CustomerController : ControllerBase
     {
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Test()
         {
-            return Ok("Geldi");
+            return Ok("Test");
+        }
+        public IActionResult Test2()
+        {
+            return Ok("Jenkins Executed");
         }
     }
 }
