@@ -10,7 +10,7 @@ namespace TestApi.Controllers
         [Route("first-test")]
         public IActionResult Test()
         {
-            return Ok("Furkan Emre Altıntaş");
+            return Ok("Jenkins Test func");
         }
 
     }
