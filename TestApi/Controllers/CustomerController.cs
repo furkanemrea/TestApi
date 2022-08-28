@@ -13,7 +13,7 @@ namespace TestApi.Controllers
         }
         public IActionResult Test2()
         {
-            return Ok("Jenkins Executed");
+            return Ok("Jenkins Executed"); 
         }
     }
 }
