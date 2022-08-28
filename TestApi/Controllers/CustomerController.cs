@@ -10,19 +10,8 @@ namespace TestApi.Controllers
         [Route("first-test")]
         public IActionResult Test()
         {
-            return Ok("Test");
+            return Ok("Furkan Emre Altıntaş");
         }
-        [HttpGet]
-        [Route("second-test")]
-        public IActionResult Test2()
-        {
-            return Ok("Jenkins Executed"); 
-        }
-        [HttpGet]
-        [Route("third-test")]
-        public IActionResult Test3()
-        {
-            return Ok("Jenkins still executing");
-        }
+
     }
 }
