@@ -19,6 +19,7 @@ namespace TestApi.Controllers
 
             customerList.Add(new Customer()
             {
+                Id=1,
                 Name="Furkan",
                 Surname="Altıntaş",
                 Age=26,
@@ -32,6 +33,7 @@ namespace TestApi.Controllers
 
             customerList.Add(new Customer()
             {
+                Id=2,
                 Name="İbrahim",
                 Surname="Altıntaş",
                 Age=37,
@@ -45,6 +47,7 @@ namespace TestApi.Controllers
 
             customerList.Add(new Customer()
             {
+                Id=3,
                 Name="Ayla",
                 Surname="Altıntaş",
                 Age=36,
