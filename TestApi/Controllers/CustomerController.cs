@@ -166,6 +166,25 @@ namespace TestApi.Controllers
             return Ok(customerResponse);
         }
 
+        [HttpPost]
+        [Route("customer-delete")]
+        public IActionResult Delete(int id)
+        {
+            ResponseModel<Customer> customerResponse = new();
+            Customer customer =  customerList.Where(x => x.Id == id).FirstOrDefault();
+            if(customer != null)
+            {
+                customerList.Remove(customer);
+                customerResponse.Data=customer;
+                customerResponse.Status=200;
+            }
+            else
+            {
+                customerResponse.Status=400;
+            }
+            return Ok(customerResponse);
+        }
+
         [HttpGet]
         [Route("first-test")]
         public IActionResult Test()
