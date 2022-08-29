@@ -16,48 +16,50 @@ namespace TestApi.Controllers
         public IActionResult Get()
         {
             ResponseModel<List<Customer>> customerResponse = new();
-
-            customerList.Add(new Customer()
+            if (customerList.Count == 0)
             {
-                Id=1,
-                Name="Furkan",
-                Surname="Altıntaş",
-                Age=26,
-                Address =new()
+                customerList.Add(new Customer()
                 {
-                    City="Zonguldak",
-                    Street="Ereğli"
-                },
-                Phone="0553 497 09 01"
-            });
+                    Id=1,
+                    Name="Furkan",
+                    Surname="Altıntaş",
+                    Age=26,
+                    Address =new()
+                    {
+                        City="Zonguldak",
+                        Street="Ereğli"
+                    },
+                    Phone="0553 497 09 01"
+                });
 
-            customerList.Add(new Customer()
-            {
-                Id=2,
-                Name="İbrahim",
-                Surname="Altıntaş",
-                Age=37,
-                Address =new()
+                customerList.Add(new Customer()
                 {
-                    City="Samsun",
-                    Street="Canik"
-                },
-                Phone="0536 866 54 11"
-            });
+                    Id=2,
+                    Name="İbrahim",
+                    Surname="Altıntaş",
+                    Age=37,
+                    Address =new()
+                    {
+                        City="Samsun",
+                        Street="Canik"
+                    },
+                    Phone="0536 866 54 11"
+                });
 
-            customerList.Add(new Customer()
-            {
-                Id=3,
-                Name="Ayla",
-                Surname="Altıntaş",
-                Age=36,
-                Address =new()
+                customerList.Add(new Customer()
                 {
-                    City="Ankara",
-                    Street=""
-                },
-                Phone="0536 866 54 11"
-            });
+                    Id=3,
+                    Name="Ayla",
+                    Surname="Altıntaş",
+                    Age=36,
+                    Address =new()
+                    {
+                        City="Ankara",
+                        Street=""
+                    },
+                    Phone="0536 866 54 11"
+                });
+            }
 
             customerResponse.Status = 200;
             customerResponse.Message = "Successfull";
