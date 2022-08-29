@@ -161,7 +161,7 @@ namespace TestApi.Controllers
         {
             ResponseModel<List<Customer>> customerResponse = new();
             customerResponse.Status = 200;
-            customerResponse.Data = customerList.Where(x => x.Name.Contains(keyword) ||x.Surname.Contains(keyword)).ToList();
+            customerResponse.Data = customerList.Where(x => x.Name.ToLower().Contains(keyword.ToLower()) ||x.Surname.ToLower().Contains(keyword.ToLower())).ToList();
             customerResponse.Message = "Successfull";
             return Ok(customerResponse);
         }
