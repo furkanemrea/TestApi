@@ -30,10 +30,9 @@ namespace TestApi
             services.AddControllers();
             services.AddCors(options => options.AddPolicy(ApiCorsPolicy, builder =>
             {
-                builder.WithOrigins("http://localhost:44398", "http://www.example.com").AllowAnyOrigin()
+                builder.AllowAnyOrigin()
                 .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials();
+                .AllowAnyHeader();
             }));
             services.AddSwaggerGen(c =>
             {

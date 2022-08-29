@@ -121,6 +121,31 @@ namespace TestApi.Controllers
                     },
                     Phone="0553 364 32 56"
                 });
+                customerList.Add(new Customer()
+                {
+                    Name="Cüneyt",
+                    Surname="Akıncı",
+                    Age=47,
+                    Address =new()
+                    {
+                        City="Samsun",
+                        Street="Çarşamba"
+                    },
+                    Phone=""
+                });
+
+                customerList.Add(new Customer()
+                {
+                    Name="Ekim",
+                    Surname="Turunç",
+                    Age=32,
+                    Address =new()
+                    {
+                        City="",
+                        Street=""
+                    },
+                    Phone=""
+                });
             }
 
             customerResponse.Status = 200;
