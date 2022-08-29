@@ -1,8 +1,10 @@
-﻿namespace TestApi.Models
+﻿using System;
+
+namespace TestApi.Models
 {
     public class Customer
     {
-        public int Id { get; set; } 
+        public int Id { get; set; } = new Random().Next(0,1000000);
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age { get; set; }
