@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using TestApi.Models;
 using TestApi.Models.Base;
 
@@ -7,6 +9,7 @@ namespace TestApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [EnableCors()]
     public class CustomerController : ControllerBase
     {
         public static List<Customer> customerList = new List<Customer>();
@@ -20,7 +23,6 @@ namespace TestApi.Controllers
             {
                 customerList.Add(new Customer()
                 {
-                    Id=1,
                     Name="Furkan",
                     Surname="Altıntaş",
                     Age=26,
@@ -34,7 +36,6 @@ namespace TestApi.Controllers
 
                 customerList.Add(new Customer()
                 {
-                    Id=2,
                     Name="İbrahim",
                     Surname="Altıntaş",
                     Age=37,
@@ -48,7 +49,6 @@ namespace TestApi.Controllers
 
                 customerList.Add(new Customer()
                 {
-                    Id=3,
                     Name="Ayla",
                     Surname="Altıntaş",
                     Age=36,
@@ -59,6 +59,68 @@ namespace TestApi.Controllers
                     },
                     Phone="0536 866 54 11"
                 });
+
+                customerList.Add(new Customer()
+                {
+                    Name="Mahmut",
+                    Surname="Alabey",
+                    Age=32,
+                    Address =new()
+                    {
+                        City="Bolu",
+                        Street="Korkmazlar"
+                    },
+                    Phone="0536 983 92 01"
+                });
+
+                customerList.Add(new Customer()
+                {
+                    Name="Tuncay",
+                    Surname="Akan",
+                    Age=44,
+                    Address =new()
+                    {
+                        City="Denizli",
+                        Street="Madenler"
+                    },
+                    Phone=""
+                });
+                customerList.Add(new Customer()
+                {
+                    Name="Ekin",
+                    Surname="Tarla",
+                    Age=21,
+                    Address =new()
+                    {
+                        City="",
+                        Street=""
+                    },
+                    Phone="0539 828 01 92"
+                });
+                customerList.Add(new Customer()
+                {
+                    Name="Emine",
+                    Surname="Altıntaş",
+                    Age=58,
+                    Address =new()
+                    {
+                        City="Trabzon",
+                        Street="Sürmene"
+                    },
+                    Phone="0553 364 32 56"
+                });
+                customerList.Add(new Customer()
+                {
+                    Name="Emine",
+                    Surname="Altıntaş",
+                    Age=58,
+                    Address =new()
+                    {
+                        City="Trabzon",
+                        Street="Sürmene"
+                    },
+                    Phone="0553 364 32 56"
+                });
             }
 
             customerResponse.Status = 200;
@@ -66,6 +128,19 @@ namespace TestApi.Controllers
             customerResponse.Data = customerList;
             return Ok(customerResponse);
         }
+
+
+        [HttpGet]
+        [Route("customer-list-filter")]
+        public IActionResult GetListByFilter(string keyword)
+        {
+            ResponseModel<List<Customer>> customerResponse = new();
+            customerResponse.Status = 200;
+            customerResponse.Data = customerList.Where(x => x.Name.Contains(keyword) ||x.Surname.Contains(keyword)).ToList();
+            customerResponse.Message = "Successfull";
+            return Ok(customerResponse);
+        }
+
         [HttpGet]
         [Route("first-test")]
         public IActionResult Test()

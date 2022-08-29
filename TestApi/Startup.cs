@@ -20,7 +20,7 @@ namespace TestApi
         {
             Configuration = configuration;
         }
-
+        readonly string ApiCorsPolicy = "_apiCorsPolicy";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -28,6 +28,13 @@ namespace TestApi
         {
 
             services.AddControllers();
+            services.AddCors(options => options.AddPolicy(ApiCorsPolicy, builder =>
+            {
+                builder.WithOrigins("http://localhost:44398", "http://www.example.com").AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
+            }));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TestApi", Version = "v1" });
@@ -47,7 +54,7 @@ namespace TestApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors(ApiCorsPolicy);
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
