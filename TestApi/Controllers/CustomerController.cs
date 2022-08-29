@@ -9,7 +9,7 @@ namespace TestApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [EnableCors()]
+    [EnableCors("_apiCorsPolicy")]
     public class CustomerController : ControllerBase
     {
         public static List<Customer> customerList = new List<Customer>();
