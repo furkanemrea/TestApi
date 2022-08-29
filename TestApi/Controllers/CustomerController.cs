@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using TestApi.Models;
@@ -181,7 +182,7 @@ namespace TestApi.Controllers
             else
             {
                 customerResponse.Data=customer;
-                customerResponse.Message = "Kullanıcıyı bulamadım";
+                customerResponse.Message = id + " ||||||||||" + JsonConvert.SerializeObject(customerList);
                 customerResponse.Status=400;
             }
             return Ok(customerResponse);
