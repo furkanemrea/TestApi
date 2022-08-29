@@ -180,6 +180,8 @@ namespace TestApi.Controllers
             }
             else
             {
+                customerResponse.Data=customer;
+                customerResponse.Message = "Kullanıcıyı bulamadım";
                 customerResponse.Status=400;
             }
             return Ok(customerResponse);
